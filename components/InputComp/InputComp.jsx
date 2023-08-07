@@ -1,0 +1,22 @@
+const InputComp = (props) => {
+    // const { errorMessage, placeholder, ...inputProps } = props
+    return (
+        // eski my-5
+        <div className="w-full my-3">
+            <label className="relative block w-full">
+                <input
+                    className="h-14 w-full border outline-none px-4 peer rounded-lg"
+                    required
+
+                />
+                <span className="absolute top-4 left-0 px-4 text-sm  h-full peer-focus:top-0 peer-focus:text-xs peer-focus:text-gray-300 peer-valid:top-0 peer-valid:text-gray-300 peer-valid:text-xs transition-all">
+
+                </span>
+            </label>
+            <span className='text-red-500 text-xs' > </span>
+        </div>
+
+    )
+}
+
+export default InputComp
