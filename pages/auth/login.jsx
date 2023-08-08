@@ -7,11 +7,10 @@ import { loginSchema } from '@/Schema/loginSchema'
 
 const Login = () => {
     const onSubmit = async (values, actions) => {
-        await new Promise((resolve) => setTimeout(resolve, 2000))
+        await new Promise((resolve) => setTimeout(resolve(alert(JSON.stringify(values, null, 2))), 2000))
         actions.resetForm()
     }
-
-    // use formik
+    // form validation use formik and Yup
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -31,9 +30,6 @@ const Login = () => {
             value: formik.values.email,
             errorMessage: formik.errors.email,
             touched: formik.touched.email
-
-
-
         },
         {
             id: 2,
@@ -43,10 +39,6 @@ const Login = () => {
             value: formik.values.password,
             errorMessage: formik.errors.password,
             touched: formik.touched.password
-
-
-
-
         }
     ]
 
@@ -59,10 +51,6 @@ const Login = () => {
                 <div className="mb-5 text-3xl capitalize">login page</div>
                 <div className="w-[60%] h-fit py-10 bg-gray-200 rounded-lg">
                     <div className="mx-5">
-                        {/* <InputComp />
-                        <InputComp /> */}
-
-
                         <form onSubmit={formik.handleSubmit}>
                             {inputs.map((input) => {
                                 return (
@@ -77,13 +65,6 @@ const Login = () => {
                             })}
                             <button type='submit' className="bg-gray-800 w-full text-white py-3 rounded-lg capitalize hover:bg-gray-950 transition-all">submit</button>
                         </form>
-
-
-
-
-
-
-
                     </div>
                 </div>
                 <Link href="/auth/register">create a new account ...</Link>
