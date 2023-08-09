@@ -2,12 +2,23 @@ import InputComp from '@/components/InputComp/InputComp'
 import Link from 'next/link'
 import { registerSchema } from '@/Schema/registerSchema'
 import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const register = () => {
 
     const onSubmit = async (values, actions) => {
-        await new Promise((resolve) => setTimeout(resolve(alert(JSON.stringify(values, null, 2))), 2000))
-        actions.resetForm()
+        try {
+            const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/users/register`, values)
+            if (res.status === 200) {
+                toast.success("User created successfully")
+                actions.resetForm()
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error(error.response.data.msg)
+        }
+
     }
 
     // form validation use formik and Yup
@@ -83,8 +94,11 @@ const register = () => {
                                     )
                                 })
                             }
-                            <button type='submit'
-                                className="bg-gray-800 w-full text-white py-3 rounded-lg capitalize hover:bg-gray-950 transition-all">submit</button>
+                            <button
+                                type='submit'
+                                className="bg-gray-800 w-full text-white py-3 rounded-lg capitalize hover:bg-gray-950 transition-all">
+                                register
+                            </button>
                         </form>
                     </div>
                 </div>

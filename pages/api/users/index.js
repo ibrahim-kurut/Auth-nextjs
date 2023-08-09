@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import User from "@/models/User";
 import dbConnect from "@/util/dbConnection";
 
@@ -19,7 +18,7 @@ const handler = async (req, res) => {
     if (method === "POST") {
         try {
             const newUser = await User.create(req.body)
-            res.status(201).json(newUser)
+            res.status(200).json(newUser)
         } catch (error) {
             console.log(error);
         }
