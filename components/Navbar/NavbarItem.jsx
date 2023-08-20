@@ -19,7 +19,7 @@ const NavbarItem = () => {
             url: "/streams"
         },
         {
-            name: "profile",
+            name: "",
             url: "/profile"
         }
     ]
